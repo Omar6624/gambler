@@ -1,3 +1,19 @@
+const arrayofObjects = [];
+const objectsOfSlot ={
+    A:3,
+    B:4,
+    C:6,
+    D:6
+};
+
+const slotValue = {
+    A:5,
+    B:4,
+    C:3,
+    D:2
+};
+
+
 //deposit some money
 const prompt = require("prompt-sync")();
 
@@ -49,12 +65,42 @@ function betAmount(totalAmount , totalLines) {
             }
     }
 };
-let totalAmount = deposit();
-let totalLines = betLine();
-let totalBet = betAmount(totalAmount,totalLines);
-console.log(totalBet);
 //spin slot machine
+function slotMachine(){
+    
+    const slots=[];
+    const col = 3;
+    const row = 3;
+    for(let [sub,count] of Object.entries(objectsOfSlot))
+    {
+        for(let i = 0 ; i< count ; i++)
+        {
+            arrayofObjects.push(sub);
+        } 
+    }
+    const reel = [];
+    //random select
+    const reelArray = [...arrayofObjects];
+    for(let i = 0;i<col;i++){
+        const tempArr = []
+        for(let j = 0;j<row;j++){
+            const randomIndex = Math.floor(Math.random()*reelArray.length);
+            tempArr.push(reelArray[randomIndex]);
+        }
+        reel.push(tempArr);
+    }
+    console.log(reel);
+    return reel;
+}
+
+slotMachine();
 
 //win??update user money
 //lost?update user money
 //play again(if he has money left)
+
+
+// let totalAmount = deposit();
+// let totalLines = betLine();
+// let totalBet = betAmount(totalAmount,totalLines);
+// console.log(totalBet);
