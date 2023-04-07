@@ -1,1 +1,1 @@
-const reelArray = [...objectsOfSlot];
+console.log(boolArr)
